@@ -27,7 +27,7 @@ axios.interceptors.response.use( (response) => {
         duration: millSecondMinutes(response.duration),
         url: response.config.url,
         method: response.config.method,
-        status: response.config.metadata.status
+        status: response.status
     }
     if(logger.length > 80){
         logger = [];
@@ -35,7 +35,7 @@ axios.interceptors.response.use( (response) => {
     else {
         logger.push(time);
     }
-    console.log(time);
+    console.log(logger);
     return response;
 }, (error) => {
     logger.push(
