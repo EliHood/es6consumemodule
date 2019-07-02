@@ -19,7 +19,12 @@ const object = {
     method: 'GET',
     url:'https://jsonplaceholder.typicode.com/posts/1',
 }
-consume.fetch(object)
+consume.fetch(object).then( res => {
+    console.log(res.data);
+}).catch(err => {
+    console.log(err);
+})  
+  
 ```
 ### Or POST
 
@@ -30,11 +35,15 @@ const object = {
     url:'https://jsonplaceholder.typicode.com/posts',
     data:{...value}
 }
-consume.fetch(object)
+consume.fetch(object).then( res => {
+    console.log(res.data);
+}).catch(err => {
+    console.log(err);
+})  
+  
 ```
 
 ### To Demo
-
 
 ```log
 npm start
