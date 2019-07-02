@@ -49,7 +49,7 @@ axios.interceptors.response.use( (response) => {
 })
 export async function fetch(params){
     const data = await axios(params);
-    return data.data
+    return data;
 }
 export function  millSecondMinutes(time){
     var minutes = Math.floor(time / 60000);
