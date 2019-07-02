@@ -26,7 +26,7 @@ axios.interceptors.response.use( (response) => {
 
 export async function fetch(params){
    try{
-        const data = await axios.request(params);
+        const data = await axios(params);
         const response = await data.data   
         console.log(`response time ${data.duration}`);
         console.log(response)
