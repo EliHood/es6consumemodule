@@ -6,7 +6,6 @@ import log from 'log-to-file';
  * @param {params} object
  *
 */
-
 axios.interceptors.request.use( (config) =>{
     config.metadata = {
         startTime: Date.now()
@@ -23,15 +22,7 @@ axios.interceptors.response.use( (response) => {
 }, (error) => {
     return Promise.reject(error);
 })
-
 export async function fetch(params){
-   try{
-        const data = await axios(params);
-        const response = await data.data   
-        console.log(`response time ${data.duration}`);
-        console.log(response)
-    }
-    catch(error){
-        console.log(await error)
-    }
+    const data = await axios(params);
+    return data;
 }
