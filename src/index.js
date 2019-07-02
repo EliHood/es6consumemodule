@@ -1,6 +1,6 @@
 'use strict';
 import axios from 'axios';
-
+import log from 'log-to-file';
 /**
  * Makes axios call
  * @param {params} object
