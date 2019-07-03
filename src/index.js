@@ -1,7 +1,5 @@
 'use strict';
 import axios from 'axios';
-import log4js from 'log4js';
-import uniqid from 'uniqid';
 
 /**
  * Makes axios call
@@ -63,8 +61,6 @@ export async function fetch(params){
     const data = await axios(params);
     return data;
 }
-
-
 
 function  millSecondMinutes(time){
     var minutes = Math.floor(time / 60000);
