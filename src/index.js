@@ -1,12 +1,18 @@
 'use strict';
 import axios from 'axios';
-import log from 'log-to-file';
+import log4js from 'log4js';
+import uniqid from 'uniqid';
+
 /**
  * Makes axios call
  * @param {params} object
  *
 */
 let logger = []
+
+//  handles passing the logs in the jsonrequests.log file 
+
+
 axios.interceptors.request.use( (config) =>{
     config.metadata = {
         startTime: Date.now()
@@ -20,20 +26,23 @@ axios.interceptors.request.use( (config) =>{
 // doesn't run when error 
 axios.interceptors.response.use( (response) => {
     response.config.metadata.endTime = Date.now()
+  
     response.duration = response.config.metadata.endTime - response.config.metadata.startTime
-    const time = {
+    
+    const statusData = {
         startTime: response.config.metadata.startTime,
         endTime: response.config.metadata.endTime,
         duration: millSecondMinutes(response.duration),
         url: response.config.url,
         method: response.config.method,
-        status: response.status
+        status: response.status,
+ 
     }
     if(logger.length > 80){
         logger = [];
     }
     else {
-        logger.push(time);
+        logger.push(statusData);
     }
     console.log(logger);
     return response;
@@ -45,13 +54,19 @@ axios.interceptors.response.use( (response) => {
         }
     );
     console.log(logger);
-    // return Promise.reject(error);
+    return error;
 })
+
+// we only export this function, so the user can have access to this function
+// only~
 export async function fetch(params){
     const data = await axios(params);
     return data;
 }
-export function  millSecondMinutes(time){
+
+
+
+function  millSecondMinutes(time){
     var minutes = Math.floor(time / 60000);
     var seconds = ((time % 60000) / 1000).toFixed(0);
     return minutes + ":" + (seconds < 10 ? '0' : '') + seconds + time ;

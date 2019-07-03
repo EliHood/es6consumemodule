@@ -1,15 +1,16 @@
 import * as myModule from './src/'
 
-const url = 'https://jsonplaceholder.typicode.com/posts/1';
+const url = 'https://jsonplaceholder.typicode.com/posts';
 const value = {name:"Bob", job:'Software Dev'};
 const config = {
-    method: 'GET',
+    method: 'POST',
     url:url,
-    // data: {...value},
+    data: {...value},
+    headers: {'X-Custom-Header': 'foobar'}
 }
 
 const test = myModule.fetch(config).then( res => {
-    console.log(res)
+    console.log(res.data)
 }).catch(err => {
     console.log(`error here ${err}`);
 })
