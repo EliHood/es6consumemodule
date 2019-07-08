@@ -1,12 +1,13 @@
 {
   "name": "elifetchmodes6",
-  "version": "1.4.1",
+  "version": "1.4.9",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha src/test --watch --require @babel/register",
     "start": "babel-node main.js",
-    "prepublish": "babel src --out-dir lib"
+    "prepublish": "babel src --out-dir lib",
+    "publish": "npm run prepublish && sudo npm publish"
   },
   "repository": "https://github.com/EliHood/es6consumemodule",
   "author": "",
