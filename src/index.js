@@ -1,6 +1,21 @@
 'use strict';
 import axios from 'axios';
-import log4js from 'log4js';
+// import log4js from 'log4js';
+// import {winston, transports, format, createLogger} from 'winston';
+import path from 'path';
+// import * as fs from 'fs';
+// const logDir = 'log';
+
+
+
+// Create the log directory if it does not exist
+// if (!fs.existsSync(logDir)) {
+//   fs.mkdirSync(logDir);
+// }
+
+// const filename = path.join(logDir, 'stuff.json');
+
+
 /**
  * Makes axios call
  * @param {params} object
@@ -12,15 +27,25 @@ let logger = [];
 // level ALL captures every and any request.
 // the filename would be called logtofile.json, all of the calls would
 // be written to the logtofile.json file
-// logger.trace() logs data to the file. 
 
 
-const logtoFile = log4js.getLogger();
-log4js.configure({
-    appenders: { log: { type: 'file',  filename: 'logtofile.json'} },
-    categories: { default: { appenders: ['log'], level: 'ALL' } }
-});
+// const ourLogger = createLogger({
+//     level: 'info',
+//     format: format.json(),
+//     defaultMeta: { service: 'user-service' },
+//     transports: [
+//       //
+//       // - Write to all logs with level `info` and below to `combined.log` 
+//       // - Write all logs error (and below) to `error.log`.
+//       //
+//       new transports.File({ filename })
+//     ]
+// });
+
+
+
 axios.interceptors.request.use( (config) =>{
+    
     config.metadata = {
         startTime: Date.now()
     }
@@ -36,19 +61,23 @@ axios.interceptors.response.use( (response) => {
     response.config.metadata.clientId = setClientid();
     response.config.metadata.transactionId = setTransactionId();
     response.duration = response.config.metadata.endTime - response.config.metadata.startTime
+    const newDur = response.duration.toString()
+    const newTime = `${newDur} mills`
+    console.log(newTime);
+    response.config.metadata.finalTime = newTime;
     const statusData = {
         startTime: response.config.metadata.startTime,
         endTime: response.config.metadata.endTime,
-        duration: millSecondMinutes(response.duration),
+        duration:  response.config.metadata.finalTime,
         url: response.config.url,
         method: response.config.method,
         status: response.status,
         clientId:  response.config.metadata.clientId,
         transactionId: response.config.metadata.transactionId
     }   
-     // logger trace writes statusData{object} to the logtofile.json
-    logtoFile.trace(statusData);
-    console.log(`look${statusData}`)
+
+    // ourLogger.log('info', statusData);
+    console.log(statusData)
     if(logger.length > 80){
         logger = [];
     }
@@ -64,7 +93,7 @@ axios.interceptors.response.use( (response) => {
         }
     );
     // also writes errors to logtofile.json
-    logtoFile.trace(error);
+    // ourLogger.log('info',error);
     return error;
 })
 // we only export this function, so the user can have access to this function
@@ -74,6 +103,50 @@ export async function fetch(params){
     const ourData ={data, logger}
     return ourData;
 }
+
+// on error function 
+
+export function onError(){
+    const data = {};
+//  closure ??? 
+// this would be invoked on the client side , 
+// now where do we call this ? 
+ window.onerror = ( msg, url,lineNo,columnNo, error) => {
+    let string = msg.toLowerCase();
+    let substring = 'script error';
+    if (string.indexOf(substring) > -1) {
+      alert('Script Error: See Browser Console for Detail');
+    } else {
+      let message = [
+        'Message: ' + msg,
+        'URL: ' + url,
+        'Line: ' + lineNo,
+        'Column: ' + columnNo,
+        'Error object: ' + JSON.stringify(error)
+      ].join(' - ');
+      const messageObj = {
+        Message: msg,
+        URL: url,
+        Line: lineNo,
+        Column: columnNo,
+        ErrorObject: JSON.stringify(error)
+      };
+      const messObj = JSON.stringify(messageObj)
+      console.log(messObj);
+
+    //   ourLogger.log('info',messObj);
+  
+      alert(message);
+      console.log(messageObj);
+    }
+    return false;
+  };
+
+}
+
+
+
+
 function setClientid() {
     return Math.floor(Math.random() * 52029326) + 1
 }

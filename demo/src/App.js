@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
-import * as consume from '../src/';
+import * as consume from 'elifetchmodes6';
 import './App.css';
 
 class App extends Component {
 
+  componentDidMount(){
+    console.log('owl')
+  }
   
   render(){
     return(
