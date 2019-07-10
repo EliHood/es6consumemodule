@@ -72,7 +72,7 @@ function onError(){
                 ErrorObject: JSON.stringify(error),
                 Browser: getCurrentBrowser()
             }
-            // trace stack i guess.
+            // trace stack here i guess.
         }
         else {
           messageObj = {
