@@ -51,7 +51,7 @@ axios.interceptors.response.use( (response) => {
 // only~
 export async function fetch(params){
     const data = await axios(params);   
-    const ourData ={data, logger}
+    const ourData = {data, logger}
     return ourData;
 }
 // on error function 
