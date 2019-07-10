@@ -97,7 +97,7 @@ function getCurrentBrowser(){
     return currentBrowser
 }
 function sendErrorToServer(errMsg){
-    // api call
+    // api callty
 }
 //
 export function onErrorMain(){
