@@ -51,16 +51,15 @@ axios.interceptors.response.use( (response) => {
 // only~
 export async function fetch(params){
     const data = await axios(params);   
-    const ourData = {data, logger}
-    return ourData;
+    return data;
 }
 // on error function 
 function onError(){
     const data = {};
     return window.onerror = ( msg, url,lineNo,columnNo, error) => {
-        let string = msg.toLowerCase();
+        let errMsg = msg.toLowerCase();
         let substring = 'script error';
-        if (string.indexOf(substring) > -1) {
+        if (errMsg.indexOf(substring) > -1) {
             alert('Script Error: See Browser Console for Detail');
         } 
         else if(typeof PROD_ENV === "string" && PROD_ENV != "Y"){
