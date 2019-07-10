@@ -86,7 +86,7 @@ function getCurrentBrowser(){
 }
 
 function sendErrorToServer(errMsg){
-/
+
 }
 
 export function onErrorMain(){
