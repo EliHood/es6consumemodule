@@ -3,18 +3,31 @@ import logo from './logo.svg';
 import * as consume from 'elifetchmodes6';
 import './App.css';
 
-class App extends Component {
+class App extends Component{
 
   componentDidMount(){
-    console.log('owl')
+    const getLog = {
+      method: "get",
+      url:'https://jsonplaceholder.typicode.com/posts/1',
+    }
+    consume.fetch(getLog).then( res => {
+      console.log(res);
+      this.setState({
+        data: res.logger
+      })
+    })
+
+    consume.onErrorMain();
+    consume.dfdsdksdks()
+    
   }
-  
+
   render(){
     return(
-      <h1>test</h1>
+      <h1>Welcome</h1>
     )
   }
-  
-}
 
+
+}
 export default App;

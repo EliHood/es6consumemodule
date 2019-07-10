@@ -1,7 +1,7 @@
 import * as myModule from './src/';
 const url = 'https://jsonplaceholder.typicode.com/posts';
 const value = {name:"Bob", job:'Software Dev'};
-/////// GET
+///// GET
 const config = {
     method: 'GET',
     url:url + '/1',
@@ -53,4 +53,4 @@ console.log(test4);
 //     method: 'GET',
 //     url:url + '/1',
 // }
-// myModule.onError(config5);
+
