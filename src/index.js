@@ -63,13 +63,6 @@ function onError(){
             alert('Script Error: See Browser Console for Detail');
         } 
         else {
-            let message = [
-                'Message: ' + msg,
-                'URL: ' + url,
-                'Line: ' + lineNo,
-                'Column: ' + columnNo,
-                'Error object: ' + JSON.stringify(error)
-            ].join(' - ');
             const messageObj = {
                 Message: msg,
                 URL: url,
@@ -93,7 +86,7 @@ function getCurrentBrowser(){
 }
 
 function sendErrorToServer(errMsg){
-    
+/
 }
 
 export function onErrorMain(){
