@@ -1,5 +1,7 @@
 import axios from 'axios';
 let logger = [];
+// declare messageObj here for more flexiblity for rendering different error messages
+var messageObj = {}
 axios.interceptors.request.use( (config) =>{
     config.metadata = {
         startTime: Date.now()
@@ -29,7 +31,6 @@ axios.interceptors.response.use( (response) => {
         transactionId: response.config.metadata.transactionId
     }   
     console.log(statusData)
-
     if(logger.length > 80){
         logger = [];
     }
@@ -62,8 +63,19 @@ function onError(){
         if (string.indexOf(substring) > -1) {
             alert('Script Error: See Browser Console for Detail');
         } 
+        else if(typeof PROD_ENV === "string" && PROD_ENV != "Y"){
+            messageObj = { 
+                Message: msg,
+                URL: url,
+                Line: lineNo,
+                Column: columnNo,
+                ErrorObject: JSON.stringify(error),
+                Browser: getCurrentBrowser()
+            }
+            // trace stack i guess.
+        }
         else {
-            const messageObj = {
+          messageObj = {
                 Message: msg,
                 URL: url,
                 Line: lineNo,
@@ -72,10 +84,10 @@ function onError(){
                 Browser: getCurrentBrowser()
             };
             const messObj = JSON.stringify(messageObj)
-            
             console.log(messObj);
             // ourLogger.log('info',messObj);
             // console.log(messageObj);
+            // trace stack
             return messObj;
         }
    };
@@ -84,11 +96,10 @@ function getCurrentBrowser(){
     const currentBrowser = navigator.appName.toString();
     return currentBrowser
 }
-
 function sendErrorToServer(errMsg){
-
+    // api call
 }
-
+//
 export function onErrorMain(){
     let onErrorinit = onError();
     return onErrorinit;
