@@ -18,7 +18,8 @@ class App extends Component{
     })
 
     consume.onErrorMain();
-
+    
+    consume.stsfsusfff();
     
   }
 

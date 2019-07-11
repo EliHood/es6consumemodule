@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {utils, ACSSFM, URL} from './utils';
 let logger = [];
 // declare messageObj here for more flexiblity for rendering different error messages
 var messageObj = {}
@@ -51,7 +52,7 @@ axios.interceptors.response.use( (response) => {
 // only~
 export async function fetch(params){
     const data = await axios(params);   
-    const ourData ={data, logger}
+    const ourData = {data, logger}
     return ourData;
 }
 // on error function 
@@ -84,6 +85,9 @@ function onError(){
                 Browser: getCurrentBrowser()
             };
             const messObj = JSON.stringify(messageObj)
+            // utils.sendErrorToServer(messObj);
+            utils.sendErrorToServer(messObj)
+            // sendErrorToServer(messObj)
             console.log(messObj);
             // ourLogger.log('info',messObj);
             // console.log(messageObj);
@@ -92,17 +96,13 @@ function onError(){
         }
    };
 }
-function getCurrentBrowser(){
-    const currentBrowser = navigator.appName.toString();
-    return currentBrowser
-}
-function sendErrorToServer(errMsg){
-    // api call
-}
-//
 export function onErrorMain(){
     let onErrorinit = onError();
     return onErrorinit;
+}
+function getCurrentBrowser(){
+    const currentBrowser = navigator.appName.toString();
+    return currentBrowser
 }
 function setClientid() {
     return Math.floor(Math.random() * 52029326) + 1
