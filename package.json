@@ -1,10 +1,6 @@
 {
   "name": "elifetchmodes6",
-<<<<<<< HEAD
   "version": "1.9.4",
-=======
-  "version": "1.8.1",
->>>>>>> 4198cd11d486872d2487e7372e104dc858e12fc9
   "description": "",
   "main": "lib/index.js",
   "scripts": {

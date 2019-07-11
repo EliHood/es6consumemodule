@@ -52,12 +52,8 @@ axios.interceptors.response.use( (response) => {
 // only~
 export async function fetch(params){
     const data = await axios(params);   
-<<<<<<< HEAD
     const ourData = {data, logger}
     return ourData;
-=======
-    return data;
->>>>>>> 4198cd11d486872d2487e7372e104dc858e12fc9
 }
 // on error function 
 function onError(){
