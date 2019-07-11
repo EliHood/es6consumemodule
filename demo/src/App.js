@@ -18,8 +18,12 @@ class App extends Component{
     })
 
     consume.onErrorMain();
+<<<<<<< HEAD
     
     consume.stsfsusfff();
+=======
+  
+>>>>>>> 4198cd11d486872d2487e7372e104dc858e12fc9
     
   }
 
