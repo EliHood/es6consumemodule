@@ -1,8 +1,14 @@
-### Install
+### npm link from root folder, then cd client
 
 ```
-npm i elifetchmodes6
+ sudo npm i /Users/elihood/nodework/elifetchModes6
 ```
+
+```
+npm link
+```
+
+###
 
 ### To use
 

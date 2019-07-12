@@ -17,6 +17,7 @@ class Home extends Component {
     componentDidMount(){
 
        consume.onErrorMain()
+       consume.sfsfs()
       
 
     }

@@ -7,7 +7,7 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 chai.should();
 const assert = chai.assert;
-describe('should test GET', () => {
+describe('should test methods', () => {
     it('should test GET method', (done) => {
         const objectGet = {
             method: 'GET',
@@ -17,6 +17,7 @@ describe('should test GET', () => {
             done()  
             expect(res.logger[0].status).to.equal(200);
             expect(res.logger[0].method).to.equal('get');
+            expect(res.logger[0].url).to.include('https://jsonplaceholder.typicode.com')
         })
     })
     it('should test POST method', (done) => {
@@ -29,6 +30,7 @@ describe('should test GET', () => {
             done();
             expect(res.logger[1].method).to.equal('post');
             expect(res.logger[1].status).to.equal(201);
+            expect(res.logger[1].url).to.include('https://jsonplaceholder.typicode.com')
         })
     })
     it('should test PUT method', (done) => {
@@ -41,6 +43,7 @@ describe('should test GET', () => {
             done();
             expect(res.logger[2].method).to.equal('put');
             expect(res.logger[2].status).to.equal(200);
+            expect(res.logger[2].url).to.include('https://jsonplaceholder.typicode.com')
         })
     })
     it('should test DELETE method', (done) => {
@@ -53,6 +56,7 @@ describe('should test GET', () => {
             done();
             expect(res.logger[3].method).to.equal('delete');
             expect(res.logger[3].status).to.equal(200);
+            expect(res.logger[3].url).to.include('https://jsonplaceholder.typicode.com')
         })
     })    
 })
