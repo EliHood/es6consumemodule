@@ -1,13 +1,13 @@
-
-### Install 
+### Install
 
 ```
 npm i elifetchmodes6
 ```
-### To use 
+
+### To use
 
 ```js
-import * as consume from 'elifetchmodes6';
+import * as consume from "elifetchmodes6";
 ```
 
 #### Accepts POST, GET, PUT, DELETE
@@ -16,36 +16,40 @@ import * as consume from 'elifetchmodes6';
 
 ```js
 const object = {
-    method: 'GET',
-    url:'https://jsonplaceholder.typicode.com/posts/1',
-}
-consume.fetch(object).then( res => {
+  method: "GET",
+  url: "https://jsonplaceholder.typicode.com/posts/1"
+};
+consume
+  .fetch(object)
+  .then(res => {
     console.log(res.data);
-}).catch(err => {
+  })
+  .catch(err => {
     console.log(err);
-})  
-  
+  });
 ```
+
 ### Or POST
 
 ```js
-const value = {name:"Bob", job:'Software Dev'};
+const value = { name: "Bob", job: "Software Dev" };
 const object = {
-    method:'POST',
-    url:'https://jsonplaceholder.typicode.com/posts',
-    data:{...value}
-}
-consume.fetch(object).then( res => {
+  method: "POST",
+  url: "https://jsonplaceholder.typicode.com/posts",
+  data: { ...value }
+};
+consume
+  .fetch(object)
+  .then(res => {
     console.log(res.data);
-}).catch(err => {
+  })
+  .catch(err => {
     console.log(err);
-})  
-  
+  });
 ```
 
 ### To Demo
 
 ```log
-npm start
+npm run demo
 ```
-
