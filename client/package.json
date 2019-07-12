@@ -1,11 +1,14 @@
 {
-  "name": "demo",
+  "name": "client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "elifetchmodes6": "^1.9.4",
+    "axios": "^0.19.0",
+    "elifetchmodes6": "^1.8.2",
+    "moment": "^2.24.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1"
   },
   "scripts": {

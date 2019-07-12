@@ -1,6 +1,6 @@
 import * as myModule from './src/';
 import { utils } from './src/utils';
-// const url = 'https://jsonplaceholder.typicode.com/posts';
+const url = 'https://jsonplaceholder.typicode.com/posts';
 // const value = {name:"Bob", job:'Software Dev'};
 // ///// GET
 // const config = {

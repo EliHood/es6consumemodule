@@ -18,8 +18,11 @@ describe('should test GET', () => {
             method: 'GET',
             url:'https://jsonplaceholder.typicode.com/posts/1',
         }
-        // expect(consume.fetch(object)).to.be.a('object');
-       const ourData = consume.fetch(object)
-       return assert.isFulfilled(ourData, "optional message");
+        const data = consume.fetch(object).then( res => {
+            return res.data
+        });
+        expect(data).to.be.a('object');
+    //    const ourData = consume.fetch(object)
+    //    return assert.isFulfilled(ourData, "optional message");
     })
 } )

@@ -6,6 +6,7 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha src/test --watch --require @babel/register",
     "start": "babel-node main.js",
+    "demo": "cd client && npm start",
     "prepublish": "babel src --out-dir lib",
     "publish": "npm run prepublish && sudo npm publish"
   },
