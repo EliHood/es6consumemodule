@@ -1,12 +1,8 @@
-### npm link from root folder, then cd client
+### To install local module into client folder
 
-```
- sudo npm i /Users/elihood/nodework/elifetchModes6
-```
-
-```
-npm link
-```
+- `sudo npm link` get link from path
+- `cd client`
+- `sudo npm i (path from npm link`
 
 ###
 
