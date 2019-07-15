@@ -15,11 +15,7 @@ class Home extends Component {
     //  as of now, no logs are saved to anything. So we can't recieve anything on render. 
     // so were posting/appending items within array to data state
     componentDidMount(){
-
        consume.onErrorMain()
-
-          
-
     }
     postData = e => {  
       e.preventDefault();
@@ -38,9 +34,6 @@ class Home extends Component {
           data: res.logger
         })
       })
-     
-
-      
     };
     getData = e => {
       e.preventDefault();
@@ -79,19 +72,13 @@ class Home extends Component {
           data: res.logger
         })
       })
-
-    
-     
     }
     axiosCall = e =>{
         e.preventDefault();
-
         const axiosData = {
           method: 'get',
           url: this.state.url + '/1',
-  
         }
-
         axios(axiosData).then( res => {
           console.log(res);
         })
