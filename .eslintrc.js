@@ -5,7 +5,7 @@ module.exports = {
         "amd": true,
         "mocha": true
     },
-    "extends": "eslint:recommended",
+    "extends": "airbnb",
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly",
@@ -16,6 +16,9 @@ module.exports = {
         "sourceType": "module"
     },
     "rules": {
-        'no-console':0
+        'no-console':0,
+        'func-names': 0,
+        "no-param-reassign": 0
+        
     }
 };
