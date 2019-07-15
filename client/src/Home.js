@@ -15,7 +15,7 @@ class Home extends Component {
     //  as of now, no logs are saved to anything. So we can't recieve anything on render. 
     // so were posting/appending items within array to data state
     componentDidMount(){
-       consume.onErrorMain()
+      //  consume.onErrorMain()
     }
     postData = e => {  
       e.preventDefault();
