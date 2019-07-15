@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {utils, ACSSFM, URL} from './utils';
+import {utils} from './utils';
 let logger = [];
 // declare messageObj here for more flexiblity for rendering different error messages
 var messageObj = {}
@@ -57,14 +57,13 @@ export async function fetch(params){
 }
 // on error function 
 function onError(){
-    const data = {};
     return window.onerror = ( msg, url,lineNo,columnNo, error) => {
         let errMsg = msg.toLowerCase();
         let substring = 'script error';
         if (errMsg.indexOf(substring) > -1) {
             alert('Script Error: See Browser Console for Detail');
         } 
-        else if(typeof PROD_ENV === "string" && PROD_ENV != "Y"){
+        else if(typeof PROD_ENV === "string"){
             messageObj = { 
                 Message: msg,
                 URL: url,

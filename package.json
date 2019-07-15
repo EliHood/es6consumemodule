@@ -5,6 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha src/test --watch --require @babel/register",
+    "lint": "eslint  src/ --ignore-pattern '/client/'",
+    "lint:fix": "eslint src/ --ignore-pattern '/client/' --fix",
     "start": "babel-node main.js",
     "demo": "cd client && npm start",
     "prepublish": "babel src --out-dir lib",
@@ -24,6 +26,7 @@
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "chai-http": "^4.3.0",
+    "eslint": "^5.16.0",
     "mocha": "^6.1.4",
     "moxios": "^0.4.0",
     "request": "^2.88.0",

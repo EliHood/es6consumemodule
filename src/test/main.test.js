@@ -1,12 +1,10 @@
 import * as consume from '../index';
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import { equal } from 'assert';
 // import request from 'request';
 const expect = chai.expect;
 chai.use(chaiHttp);
 chai.should();
-const assert = chai.assert;
 describe('should test methods', () => {
     it('should test GET method', (done) => {
         const objectGet = {

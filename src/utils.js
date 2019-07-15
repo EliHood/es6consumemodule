@@ -2,7 +2,6 @@ const myModule = require('./index')
 let utils = {};
 let ACSSFM = {};
 ACSSFM.sendErrorToServer = function(error) {
-  var error;
   if (typeof error === "string") error = { error: error };
   else {
     var errorMsg = error.message;
@@ -31,6 +30,7 @@ ACSSFM.sendInfoToServer = function(info) {
 };
 
 ACSSFM.sendDebugToServer = function(debug) {
+  let LOG_ENABLED;
   if (
     typeof LOG_ENABLED != "undefined" &&
     LOG_ENABLED != null &&
@@ -89,10 +89,6 @@ if(typeof(window) !== 'undefined'){
     uri,
     type,
     jsonObject,
-    callback,
-    dataServiceName,
-    forwardedData,
-    retryCount
   ) {
     myModule
       .fetch({
