@@ -17,8 +17,8 @@ class Home extends Component {
     componentDidMount(){
 
        consume.onErrorMain()
-   
-      
+
+          
 
     }
     postData = e => {  
