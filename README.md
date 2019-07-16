@@ -1,10 +1,10 @@
 ### To install local module into client folder
 
-- `sudo npm link` get link from path
-- `cd client`
-- `sudo npm i (path from npm link`
+- ~`sudo npm link` get link from path
+- ~`cd client`
+- ~`sudo npm i (path from npm link)`
 
-###
+### don't change package version of this module on the react folder
 
 ### To use
 
