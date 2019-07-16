@@ -75,7 +75,7 @@ function onError() {
     const errMsg = msg.toLowerCase();
     const substring = 'script error';
     if (errMsg.indexOf(substring) > -1) {
-      console.log('Script Error: See Browser Console for Detail');
+        console.log('Script Error: See Browser Console for Detail');
     } else if (typeof PROD_ENV === 'string') {
       messageObj = {
         Message: msg,
