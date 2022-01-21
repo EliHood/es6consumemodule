@@ -44,7 +44,7 @@
     "bunyan": "^1.8.12",
     "eslint": "^5.16.0",
     "log-to-file": "^2.0.1",
-    "log4js": "^4.4.0",
+    "log4js": "^6.4.0",
     "loglevel": "^1.6.3",
     "loglevel-plugin-remote": "^0.6.8",
     "moment": "^2.24.0",
